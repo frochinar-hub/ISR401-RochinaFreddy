@@ -1,0 +1,137 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage{lmodern}
+\usepackage[a4paper,left=1.8cm,right=1.8cm,top=2.15cm,bottom=2.0cm]{geometry}
+\usepackage{microtype}
+\usepackage[table]{xcolor}
+\usepackage{array,longtable,booktabs,tabularx,multirow}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{ragged2e}
+\usepackage{cite}
+
+\hypersetup{colorlinks=true,linkcolor=blue!50!black,urlcolor=blue!50!black,citecolor=blue!45!black,pdftitle={FORM-TL-01 - Taller de tipos de requisitos},pdfauthor={Rochina Rochina Freddy David}}
+
+\definecolor{verdeUTEQ}{HTML}{087647}
+\definecolor{verdeTenue}{HTML}{EDF6F0}
+\definecolor{grisTenue}{HTML}{F3F5F6}
+\definecolor{grisTexto}{HTML}{404850}
+
+\newcommand{\NombreEstudiante}{Rochina Rochina Freddy David}
+\newcommand{\RepoTexto}{https://github.com/frochinar-hub/ISR401-RochinaFreddy}
+\newcommand{\FechaRevision}{7 de noviembre de 2026}
+\newcommand{\Docente}{Gleiston Cicerón Guerrero Ulloa, PhD}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small UTEQ -- Ingeniería de Requerimientos -- ISR-401}
+\fancyhead[R]{\small FORM-TL-01}
+\fancyfoot[C]{\small Página \thepage\ de \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\begin{document}
+	
+	\begin{center}
+		{\Large \textbf{UNIVERSIDAD TÉCNICA ESTATAL DE QUEVEDO}}\\[0.2cm]
+		{\normalsize Facultad de Ciencias de la Computación -- Carrera de Software}\\[0.4cm]
+		{\large \textbf{Ingeniería de Requerimientos (ISR-401)}}\\[0.1cm]
+		{\Large \textbf{Taller de tipos de requisitos}}\\[0.1cm]
+		{\normalsize FORM-TL-01}\\[0.2cm]
+		{\small \textit{Estudio de caso: Plataforma de gestión de citas médicas -- Policlínico Ribera del Quevedo }}
+	\end{center}
+	
+	\vspace{0.3cm}
+	
+	\noindent
+	\begin{tabularx}{\textwidth}{>{\bfseries}l X}
+		Estudiante: & \NombreEstudiante \\
+		Docente: & \Docente \\
+		Nivel y paralelo: & Cuarto nivel, paralelo A \\
+		Modalidad: & Individual \\
+		Fecha de revisión: & \FechaRevision \\
+		Repositorio: & \url{\RepoTexto} \\
+	\end{tabularx}
+	
+	\vspace{0.2cm}
+	\hrule
+	\vspace{0.2cm}
+	
+	\section{Objetivo y delimitación del caso}
+	La disciplina de la Ingeniería de Requerimientos (IR) constituye la fase crítica en el ciclo de vida del software, orientada al descubrimiento, análisis, especificación y validación de las capacidades operativas y restricciones de un sistema \cite{sommerville2019, wiegers2013}. Una definición imprecisa de las necesidades de los interesados incrementa los costos de remodelado y genera riesgos de fallo catastrófico en la fase de despliegue \cite{pohl2025, pressman2020}. En el marco de la actividad FORM-TL-01 de la Universidad Técnica Estatal de Quevedo (UTEQ), el presente documento desarrolla la caracterización taxonómica tridimensional de 20 enunciados del Policlínico Ribera del Quevedo, aplicando los modelos de calidad ISO/IEC 25010:2023 e ISO/IEC/IEEE 29148:2018 \cite{iso25010, iso29148}.
+	
+	El contexto operativo del estudio de caso analiza un centro médico privado de atención externa en la ciudad de Quevedo, estructurado operacionalmente con 24 médicos especialistas, 9 áreas médicas de especialidad y 18 consultorios físicos activos \cite{bass2021}. La institución administra un registro activo de 12\,000 pacientes y procesa un volumen promedio de 450 citas diarias \cite{bourque2014}. Un aspecto crucial en la delimitación del dominio radica en que el 35\,\% de la población atendida corresponde a adultos mayores de 60 años, lo que demanda criterios de accesibilidad universal e inclusividad digital en el diseño de interfaces \cite{iso25010, nielsen1994}.
+	
+	El servicio opera de lunes a sábado en el horario de 07:00 a 19:00, proyectando una carga pico de 300 usuarios concurrentes los días lunes a las 07:00 \cite{brooks1987}. En los términos de la arquitectura de integración, se establece como condición obligatoria la interoperabilidad mediante servicios web REST/SOAP con el sistema de facturación electrónica preexistente, el cual no será reemplazado \cite{garlan1993, fielding2000}. Por delimitación formal del alcance, quedan explícitamente excluidos del proyecto la historia clínica electrónica, los laboratorios clínicos, los módulos de farmacia y los servicios de telemedicina \cite{sommerville2019, jacobson1992}.
+	
+	\section{Criterios aplicados en la clasificación}
+	La categorización taxonómica de las especificaciones se fundamenta en las guías normativas de la norma ISO/IEC/IEEE 29148:2018 y la taxonomía clásica de requisitos de software \cite{iso29148, pohl2025, wiegers2013}:
+	\begin{itemize}[leftmargin=*, itemsep=4pt]
+		\item \textbf{Funcional (Producto / Sistema o Software):} Define los comportamientos, servicios, transformaciones de datos y reglas de negocio automatizadas que el sistema debe ejecutar ante estímulos externos o eventos temporales determinados \cite{sommerville2019, jacobson1992, meyer1997}.
+		\item \textbf{Calidad (Producto / Software):} Especifica los atributos no funcionales cuantificables relativos al desempeño, la seguridad, la usabilidad, la fiabilidad y la compatibilidad, según la norma ISO/IEC 25010:2023 \cite{iso25010, bass2021, chung2000}.
+		\item \textbf{Restricción (Producto o Proceso / Sistema o Software):} Condición imperativa u obligación externa que limita las decisiones de arquitectura, selección tecnológica, procesos metodológicos de desarrollo o marcos legales vigentes \cite{iso29148, pressman2020, ecuador2021}.
+	\end{itemize}
+	
+	
+	\section{Clasificación de los 20 enunciados}
+	\tiny
+	\begin{longtable}{|p{0.6cm}|p{3.2cm}|p{1.6cm}|p{1.4cm}|p{1.2cm}|p{1.3cm}|X|}
+		\hline
+		\rowcolor{verdeUTEQ}
+		\textbf{\color{white}Código} & \textbf{\color{white}Enunciado resumido} & \textbf{\color{white}Tipo} & \textbf{\color{white}ISO 25010} & \textbf{\color{white}Nat.} & \textbf{\color{white}Ámbito} & \textbf{\color{white}Justificación técnica} \\ \hline
+		\endhead
+		
+		E01 & Reservar cita por especialidad y médico & Funcional & -- & Prod. & Sistema & Servicio automatizado principal provisto al paciente \cite{sommerville2019}. \\ \hline
+		E02 & Recordatorio por mensaje de texto (24h) & Funcional & -- & Prod. & Sistema & Acción automatizada disparada por condición temporal \cite{iso29148}. \\ \hline
+		E03 & Aplicación rápida & Calidad & Desempeño & Prod. & Software & Requisito no funcional de eficiencia de rendimiento \cite{iso25010}. \\ \hline
+		E04 & Recepcionista registra llegada a ventanilla & Funcional & -- & Prod. & Sistema & Capacidad operativa interactiva del rol de recepción \cite{pohl2025}. \\ \hline
+		E05 & Desarrollo en Java 21 y PostgreSQL & Restricción & -- & Proc. & Software & Imposición tecnológica obligatoria sobre la arquitectura \cite{wiegers2013}. \\ \hline
+		E06 & Médico consulta agenda y marca atendidos & Funcional & -- & Prod. & Sistema & Facilidad funcional de gestión diaria para el personal médico \cite{sommerville2019}. \\ \hline
+		E07 & Datos de salud seguros & Calidad & Seguridad & Prod. & Software & Atributo de protección contra accesos no autorizados \cite{iso25010}. \\ \hline
+		E08 & Móvil compatible con Android 10+ & Restricción & -- & Prod. & Software & Límite técnico u operacional del entorno de despliegue \cite{iso29148}. \\ \hline
+		E09 & Cancelar $<4$h antes es inasistencia & Funcional & -- & Prod. & Sistema & Regla de negocio algorítmica procesada por el sistema \cite{pohl2025}. \\ \hline
+		E10 & Fácil uso para adultos mayores & Calidad & Usabilidad & Prod. & Software & Requisito de accesibilidad e interacción amigable \cite{iso25010}. \\ \hline
+		E11 & Entrega en plazo máximo de seis meses & Restricción & -- & Proc. & Sistema & Restricción de gestión temporal del ciclo de vida \cite{wiegers2013}. \\ \hline
+		E12 & Cierre de sesión automático (10 min) & Funcional & -- & Prod. & Software & Regla funcional de control y seguridad de estados activos \cite{iso29148}. \\ \hline
+		E13 & Quiosco lee cédula e imprime ticket & Funcional & -- & Prod. & Sistema & Comportamiento funcional interactivo de hardware periférico \cite{sommerville2019}. \\ \hline
+		E14 & Plataforma siempre disponible & Calidad & Fiabilidad & Prod. & Software & Requisito de continuidad operativa y tolerancia a fallos \cite{iso25010}. \\ \hline
+		E15 & Director genera reporte mensual de inasistencia & Funcional & -- & Prod. & Sistema & Capacidad analítica gerencial requerida por la dirección \cite{pohl2025}. \\ \hline
+		E16 & Validación de incrementos con director & Restricción & -- & Proc. & Sistema & Condición metodológica obligatoria sobre el proceso iterativo \cite{wiegers2013}. \\ \hline
+		E17 & Cumplir Ley Orgánica de Protec. Datos (LOPDP) & Restricción & -- & Prod. & Software & Restricción legal y regulatoria externa obligatoria \cite{ecuador2021}. \\ \hline
+		E18 & Integración sin problemas con facturación & Calidad & Compat. & Prod. & Software & Requisito de interoperabilidad con sistemas externos \cite{iso25010}. \\ \hline
+		E19 & Servidor falla: restablecer en $<30$ min & Calidad & Fiabilidad & Prod. & Software & Tolerancia a fallos cuantificable (Recuperabilidad) \cite{iso25010}. \\ \hline
+		E20 & Revisión cruzada de código fuente en equipo & Restricción & -- & Proc. & Software & Directriz obligatoria sobre el proceso de ingeniería de código \cite{wiegers2013}. \\ \hline
+	\end{longtable}
+	\normalsize
+	
+	\section{Reformulación cuantitativa de requisitos de calidad}
+	La especificación de atributos no funcionales mediante adjetivos ambiguos representa una vulnerabilidad crítica que conduce a interpretaciones dispares durante la validación del software \cite{wiegers2013, chung2000}. Con base en el modelo de calidad de producto ISO/IEC 25010:2023 y las restricciones operacionales expresadas en el dominio del caso, se transforman las 5 expresiones vagas (E03, E07, E10, E14, E18) en requerimientos rigurosamente medibles mediante métricas, unidades y umbrales cuantitativos \cite{iso25010, iso29148}:
+	
+	\begin{enumerate}[leftmargin=*, itemsep=4pt]
+		\item \textbf{RC-01 (Origen E03 - Desempeño / Eficiencia de rendimiento):} \textit{\guillemotleft El tiempo de latencia y respuesta del servidor para procesar y confirmar una transacción de reserva no superará los 2.0 segundos en el 95\,\% de las peticiones HTTP, evaluado bajo la carga pico de 300 usuarios simultáneos los lunes a las 07:00\guillemotright} \cite{iso25010, bass2021}. Métrica: Tiempo de respuesta extremo a extremo ($s$). Umbral: $\le 2.0\text{ s}$ en el $95\,\%$ de transacciones.
+		\item \textbf{RC-02 (Origen E07 - Seguridad / Confidencialidad):} \textit{\guillemotleft La totalidad de los datos personales y de salud almacenados en PostgreSQL y transmitidos hacia la aplicación móvil se cifrarán utilizando los algoritmos AES-256 en reposo y TLS 1.3 en tránsito\guillemotright} \cite{iso25010, ecuador2021, stallings2017}. Métrica: Cobertura de cifrado de campos sensibles (\,\%). Umbral: $100\,\%$ de registros cifrados.
+		\item \textbf{RC-03 (Origen E10 - Usabilidad / Inclusividad e interacción):} \textit{\guillemotleft Los usuarios pertenecientes al segmento de adultos mayores (60+ años) completarán el flujo de reserva o emisión de ticket en el quiosco en un tiempo máximo de 3.0 minutos, utilizando una tipografía mínima de 18 sp y alcanzando una tasa de éxito del 90\,\% sin asistencia externa\guillemotright} \cite{iso25010, nielsen1994}. Métrica: Tiempo de completitud ($min$) y Tasa de éxito autónomo (\,\%). Umbral: $\le 3.0\text{ min}$ y $\ge 90\,\%$ de efectividad.
+		\item \textbf{RC-04 (Origen E14 - Fiabilidad / Disponibilidad):} \textit{\guillemotleft La plataforma mantendrá una disponibilidad operativa continua del 99.5\,\% mensual durante la ventana de servicio activo (lunes a sábado de 07:00 a 19:00), excluyendo mantenimientos programados nocturnos de 22:00 a 04:00\guillemotright} \cite{iso25010, sommerville2019}. Métrica: Porcentaje de tiempo de actividad operacional (\textit{Uptime}). Umbral: $\ge 99.5\,\%$ mensual.
+		\item \textbf{RC-05 (Origen E18 - Compatibilidad / Interoperabilidad):} \textit{\guillemotleft El componente de comunicación con el sistema de facturación electrónica procesará los registros de cobro a través de su API web con una tasa de éxito del 100\,\% y un tiempo de sincronización inferior a 5.0 segundos por transacción\guillemotright} \cite{iso25010, fielding2000}. Métrica: Tiempo de sincronización API ($s$) y Éxito de mensajes (\,\%). Umbral: $< 5.0\text{ s}$ y $100\,\%$ de efectividad.
+	\end{enumerate}
+	
+	\section{Discrepancias registradas con compañero}
+	El proceso colaborativo de ingeniería de requerimientos genera divergencias interpretativas que deben resolverse con base en normativas internacionales y principios de arquitectura \cite{pohl2025, wiegers2013, beck2000}:
+	\begin{itemize}[leftmargin=*, itemsep=4pt]
+		\item \textbf{Discrepancia en E12 (Cierre de sesión automático tras 10 min):} Evaluado inicialmente por el compañero como un Requisito de Calidad (Seguridad). \textit{Resolución:} Se clasificó formalmente como \textbf{Funcional}, por tratarse de una regla de negocio y comportamiento determinista del software controlado por un temporizador de inactividad, y no una propiedad abstracta medible \cite{sommerville2019, iso29148}.
+		\item \textbf{Discrepancia en E19 (Restablecimiento del servidor en $< 30$ min):} Discutido si correspondía a una Restricción de infraestructura. \textit{Resolución:} Se argumentó como un Requisito de \textbf{Calidad (Fiabilidad / Recuperabilidad)}, al definir un parámetro métrico explícito de tiempo de recuperación (RTO) alineado con ISO/IEC 25010:2023 \cite{iso25010, bass2021}.
+	\end{itemize}
+	
+	\section{Declaración de uso de soporte tecnológico}
+	En cumplimiento estricto con el numeral 8 de la guía de evaluación y las directrices éticas de la ACM \cite{acm2018}, se declara que se utilizó la herramienta de Inteligencia Artificial Gemini (Google, versión 2026) exclusivamente como soporte para la verificación de sintaxis LaTeX, revisión ortográfica y contrastación taxonómica de las subcaracterísticas del estándar ISO/IEC 25010:2023. Toda la clasificación, justificación y reformulación técnica fue desarrollada, auditada y asumida íntegramente por el autor.
+	
+	\bibliographystyle{IEEEtran}
+	\bibliography{referencias}
+	
+\end{document}
