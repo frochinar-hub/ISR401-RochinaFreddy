@@ -1,0 +1,96 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{geometry}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{booktabs}
+
+\geometry{margin=2cm}
+
+\begin{document}
+	
+	\begin{center}
+		\textbf{\Large Universidad Tecnica Estatal de Quevedo}
+	\end{center}
+	
+	\vspace{0.2cm}
+	
+	\noindent
+	\textbf{Nombre:} Freddy David Rochina Rochina \hfill \textbf{Fecha:} 18/11/2026 \\
+	\textbf{Ingenieria de Requerimiento} \hfill \textbf{Paralelo y Curso:} ``B'' 4to software \\
+	\textbf{Evaluación Practica $\rightarrow$ (EV-PRAC-01)}
+	
+	\vspace{0.3cm}
+	
+	\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{
+			\textit{Esta es la transcripción fiel de la prueba escrita a mano el 18/11/2026; las fotografías de las hojas están en la carpeta evidencias/ del repositorio.}
+	}}
+	
+	\vspace{0.4cm}
+	
+	\section*{T1. Conceptos aplicados al caso}
+	
+	\subsection*{a)}
+	Segun el requisito (ISO/IEC/IEEE 29148:2018) Un requisito es una declaración formal que traduce o expresa una necesidad del interesado que debe de complir o poseer un sistema o producto para satisfacer un contrato norma o especificación y sobre \textbf{E7:} no es un requisito del producto aleatorio y solo describe unicamente el proceso manual actual (as-is), sin establecer ninguna capacidad al sistema. Desición sobre \textbf{E12:} No es un requisito del producto aleatorio, corresponde a una actividad administrativa y de logistima de gestión al proyecto lo cual el lugar de las reuniones con los 14 presidentes barriales y firma del acta: Pero no define funciones sus funciones ni la propiedad del producto a construir.
+	
+	\subsection*{B)}
+	Segun StRS (La Especificación de Requisitos de los interesados). Lo cual describe lo que necesitan y esperan los usuarios del proyecto en lenguaje sencillo, sin entrar en detalles técnicos de la (ISO/IEC/IEEE 29148:2018). \\
+	\textbf{Ejemplo:} E1, porque expresa la necesidad del presidente Barrial de enterarse a tiempo cuando el rio crezca para evacuar a la gente.
+	
+	\vspace{0.2cm}
+	\noindent
+	SyRS (Especificación de Requisitos del sistema) Lo cual describe cómo debe funcionar todo el sistema completo uniendo Hadware, software y comunicaciones de acuerdo a la (ISO/IEC/IEEE 29148:2018). \\
+	\textbf{Ejemplo:} E3, por que involucra tanto las estaciones físicas HL-20 como el envio de lecturas por radio LoRaWAN cada 5 minutos hacia la antena municipal.
+	
+	\vspace{0.2cm}
+	\noindent
+	SRS (Especificación de Requisitos del Software). Detalla unicamente lo que debe hacer unicamente el software (La plataforma web y App móvil) sus funciones y su rendimiento (ISO/IEC/IEEE 29148:2018; SWEBOK v4.0, cap. 1). \\
+	\textbf{Ejemplo:} E5, porque es una función directa del software generar el informe mensual de niveles del rio en PDF por cada estación.
+	
+	\subsection*{c)}
+	
+	\begin{center}
+		\begin{tabularx}{\textwidth}{|l|X|l|}
+			\hline
+			\textbf{Hecho} & \textbf{Actividad del proceso de IR (SWEBOK v4.0, cap 1)} & \textbf{Tipo de actividad (Marco de Pohl)} \\
+			\hline
+			H1 & Elicitación (entrevista y observación en sitio) & Actividad central \\
+			\hline
+			H2 & Análisis y negociación (Evaluación de opciones y acuerdo SMS) & Actividad central \\
+			\hline
+			H3 & Especificación (documentación en plantilla con ID único) & Actividad central \\
+			\hline
+			H4 & Validación (revisión con interesados y allazgo de Omisión) & Actividad central \\
+			\hline
+			H5 & Gestión de requisitos (control de cambios, análisis de impacto y Versión 1.1) & Actividad transversal \\
+			\hline
+		\end{tabularx}
+	\end{center}
+	
+	\section*{T2. Clasificación y auditoria}
+	
+	\subsection*{a)}
+	
+	\begin{center}
+		\begin{tabularx}{\textwidth}{|l|p{3.2cm}|l|X|}
+			\hline
+			\textbf{ID} & \textbf{Tipo} & \textbf{Documento} & \textbf{Justificación} \\
+			\hline
+			E1 & Requisito funcional (necesidad de usuario) & StRS & Expresa la necesidad de aviso oportuno de los presidentes Barriales en lenguaje de negocio (29148) \\
+			\hline
+			E2 & Requisito Dominio & SyRS/SRS & Regla normativa obligatoria del protocolo cantonal de riesgos: alerta naranja >4,5m y roja >5,5 m (SWEBOK v4.0) \\
+			\hline
+			E3 & Restricción (interfaz / Hadware) & SyRS & Limita la solución al uso de las 6 estaciones HL-20 ya compradas y protocolo LoRaWAN cada 5 min (29148). \\
+			\hline
+			E4 & Restricción (de Plazo y Presupuesto) & StRS & Impone limites externos de entrega antes del 15/12/2027 y presupuesto maximo de USD 60 000 (29148). \\
+			\hline
+			E5 & Requisito funcional & SRS & Define una función de salida del software genera el informe mensual de niveles en PDF (SWEBOK v4.0, cap. 1). \\
+			\hline
+			E6 & Requisito no funcional (Fiabilidad) & SyRS & Exige disponibilidad/continuidad en el registro de lecturas ante cortes electrico de hasta 12 horas (ISO/IEC/IEEE 25010). \\
+			\hline
+		\end{tabularx}
+	\end{center}
+	
+\end{document}
